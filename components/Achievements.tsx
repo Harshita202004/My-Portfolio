@@ -1,27 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaAward, FaLightbulb, FaLaptopCode, FaChartLine } from "react-icons/fa";
+import Image from "next/image";
+import { FaLightbulb, FaChartLine } from "react-icons/fa";
 
 import SectionWrapper from "./SectionWrapper";
+import { portfolioData } from "@/data/portfolio";
 
-const achievements = [
-  {
-    title: "IDEATHON 2024",
-    subtitle: "Engineering Innovation Event",
-    description:
-      "Participated in a team-based ideathon focused on solving real-world engineering problems through innovation and collaboration.",
-    icon: FaLightbulb,
-    image: "/images/ideathon.jpg",
-  },
-  {
-    title: "Power BI Workshop",
-    subtitle: "VertechX",
-    description:
-      "Completed a hands-on workshop covering dashboard creation, data visualization, and business intelligence concepts using Power BI.",
-    icon: FaChartLine,
-    image: "/images/vertex.jpg",
-  },
-];
+const achievementIcons = [FaLightbulb, FaChartLine];
 
 export default function Achievements() {
   return (
@@ -44,8 +29,8 @@ export default function Achievements() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
-          {achievements.map((item, index) => {
-            const Icon = item.icon;
+          {portfolioData.achievements.map((item, index) => {
+            const Icon = achievementIcons[index] ?? FaLightbulb;
 
             return (
               <motion.div
@@ -53,13 +38,24 @@ export default function Achievements() {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="rounded-3xl border border-white/10 bg-[#0B0B12]/80 p-8 backdrop-blur-xl shadow-[0_0_30px_rgba(168,85,247,0.12)] transition-all"
+                transition={{ delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -8, scale: 1.01 }}
+                className="group overflow-hidden rounded-3xl border border-white/10 bg-[#0B0B12]/80 p-5 backdrop-blur-xl shadow-[0_0_30px_rgba(168,85,247,0.12)] transition-all duration-300 hover:border-purple-500/35 hover:shadow-[0_0_36px_rgba(168,85,247,0.18)] sm:p-6 lg:p-8"
               >
-                <div className="flex items-start gap-5">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600 to-pink-600 text-2xl text-white shadow-lg">
-                    <Icon />
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] sm:w-40 sm:shrink-0">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      quality={95}
+                      sizes="(max-width: 640px) 100vw, 160px"
+                      className="object-cover object-center brightness-90 saturate-125 transition duration-700 group-hover:scale-105 group-hover:brightness-105"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-500/16 via-purple-600/10 to-pink-500/10 mix-blend-screen" />
+                    <div className="absolute left-3 top-3 flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-black/45 text-lg text-white shadow-lg backdrop-blur-md">
+                      <Icon />
+                    </div>
                   </div>
 
                   <div className="flex-1">
@@ -68,7 +64,7 @@ export default function Achievements() {
                     </h3>
 
                     <p className="mt-1 text-sm font-medium text-purple-400">
-                      {item.subtitle}
+                      {item.year}
                     </p>
 
                     <p className="mt-4 leading-7 text-gray-400">

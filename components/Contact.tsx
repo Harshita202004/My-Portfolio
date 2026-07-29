@@ -75,7 +75,7 @@ export default function Contact() {
           title="Let's Connect"
           highlight="Today"
           center
-          subtitle="I&apos;m always open to internships, full-time opportunities, collaborations, and exciting software development projects."
+          subtitle="I'm always open to internships, full-time opportunities, collaborations, and exciting software development projects."
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -115,12 +115,14 @@ export default function Contact() {
                 <p className="mt-3 text-gray-400">
   Thank you for contacting me. I&apos;ll get back to you soon.
 </p>
-                <button
+                <motion.button
+                  whileHover={{ y: -2, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => setStatus("idle")}
-                  className="mt-8 rounded-xl border border-purple-500/40 px-6 py-3 text-purple-300"
+                  className="mt-8 rounded-xl border border-purple-500/40 px-6 py-3 text-purple-300 transition hover:bg-purple-500/10 hover:shadow-[0_0_22px_rgba(168,85,247,0.22)]"
                 >
                   Send Another Message
-                </button>
+                </motion.button>
               </motion.div>
             ) : (
               <motion.form
@@ -155,7 +157,7 @@ export default function Contact() {
                   whileHover={{ scale: isLoading ? 1 : 1.02 }}
                   whileTap={{ scale: isLoading ? 1 : .98 }}
                   disabled={isLoading}
-                  className="flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 py-4 font-semibold text-white"
+                  className="flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 py-4 font-semibold text-white shadow-[0_0_22px_rgba(168,85,247,0.18)] transition hover:shadow-[0_0_32px_rgba(236,72,153,0.32)] disabled:cursor-not-allowed disabled:opacity-75"
                 >
                   {isLoading ? (
                     <>
@@ -190,17 +192,19 @@ function ContactCard({
   href: string;
 }) {
   return (
-    <a
+    <motion.a
+      whileHover={{ y: -6, scale: 1.015 }}
+      whileTap={{ scale: 0.98 }}
       href={href}
       target={href.startsWith("http") ? "_blank" : undefined}
       rel="noopener noreferrer"
-      className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center transition hover:-translate-y-1 hover:border-purple-500/40"
+      className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center transition hover:border-purple-500/40 hover:bg-purple-500/[0.04] hover:shadow-[0_0_30px_rgba(168,85,247,0.14)]"
     >
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-2xl text-white">
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-2xl text-white transition-transform duration-300 group-hover:scale-110">
         {icon}
       </div>
       <h3 className="mt-4 text-lg font-semibold text-white">{title}</h3>
       <p className="mt-2 break-all text-sm text-gray-400">{value}</p>
-    </a>
+    </motion.a>
   );
 }

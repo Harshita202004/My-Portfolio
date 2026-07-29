@@ -18,7 +18,7 @@ export default function About() {
         {/* Background Glow */}
         <div className="absolute -inset-4 -z-10 rounded-[40px] bg-gradient-to-r from-purple-500/10 via-fuchsia-500/10 to-pink-500/10 blur-3xl" />
 
-        <div className="rounded-[32px] border border-white/10 bg-[#0B0B12]/80 p-8 shadow-[0_0_50px_rgba(168,85,247,.15)] backdrop-blur-xl md:p-14">
+          <div className="rounded-[32px] border border-white/10 bg-[#0B0B12]/80 p-6 shadow-[0_0_50px_rgba(168,85,247,.15)] backdrop-blur-xl transition-colors duration-300 hover:border-purple-500/25 sm:p-8 md:p-14">
           {/* Heading */}
           <div className="flex flex-col items-center text-center">
             {/* Badge */}
@@ -50,52 +50,19 @@ export default function About() {
           </div>
 
           {/* About Content */}
-          <div className="mx-auto mt-14 max-w-4xl space-y-6 text-center text-lg leading-8 text-gray-300">
-            {portfolioData.about.bio.map((paragraph, index) => (
-              <motion.p
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-              >
-                {paragraph}
-              </motion.p>
-            ))}
-
+          <div className="mx-auto mt-12 max-w-4xl text-center text-base leading-8 text-gray-300 sm:text-lg">
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="pt-2 text-lg font-medium leading-8 text-purple-300"
+              transition={{ delay: 0.15 }}
             >
-              {portfolioData.about.objective}
+              {portfolioData.about.bio[0]}
             </motion.p>
           </div>
 
-          {/* Stats */}
-          <div className="mt-16 grid grid-cols-2 gap-5 lg:grid-cols-4">
-            <Stat
-              value={`${portfolioData.projects.length}+`}
-              label="Projects"
-            />
-
-            <Stat
-              value={`${portfolioData.skills.length}+`}
-              label="Technologies"
-            />
-
-            <Stat
-              value={`${portfolioData.certifications.length}`}
-              label="Certifications"
-            />
-
-            <Stat value="2027" label="Graduation" />
-          </div>
-
           {/* CTA */}
-          <div className="mt-16 flex justify-center">
+          <div className="mt-12 flex justify-center">
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
@@ -109,25 +76,5 @@ export default function About() {
         </div>
       </motion.div>
     </SectionWrapper>
-  );
-}
-
-function Stat({
-  value,
-  label,
-}: {
-  value: string;
-  label: string;
-}) {
-  return (
-    <motion.div
-      whileHover={{ y: -6, scale: 1.03 }}
-      transition={{ duration: 0.25 }}
-      className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center backdrop-blur-sm transition-all hover:border-purple-500/30 hover:bg-purple-500/5 hover:shadow-[0_0_25px_rgba(168,85,247,.15)]"
-    >
-      <h3 className="text-3xl font-bold text-purple-400">{value}</h3>
-
-      <p className="mt-2 text-sm text-gray-400">{label}</p>
-    </motion.div>
   );
 }

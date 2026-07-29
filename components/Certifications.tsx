@@ -30,25 +30,28 @@ export default function Certifications() {
           </p>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {portfolioData.certifications.map((cert, index) => (
             <motion.div
               key={cert.title}
               initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
-              whileHover={{ y: -8 }}
+              transition={{ delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -8, scale: 1.015 }}
               onClick={() => setSelected(cert)}
-              className="group cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-[#0B0B12]/80 p-6 backdrop-blur-xl"
+              className="group cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-[#0B0B12]/80 p-5 shadow-[0_0_26px_rgba(59,130,246,0.06)] backdrop-blur-xl transition-all duration-300 hover:border-purple-500/35 hover:shadow-[0_0_34px_rgba(59,130,246,0.14)] sm:p-6"
             >
-              <div className="relative mx-auto mb-5 h-28 w-28 overflow-hidden rounded-2xl border border-white/10">
+              <div className="relative mx-auto mb-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
                 <Image
                   src={cert.image}
                   alt={cert.title}
                   fill
-                  className="object-cover transition duration-500 group-hover:scale-110"
+                  quality={95}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-contain p-3 brightness-95 contrast-110 saturate-110 transition duration-700 group-hover:scale-[1.035] group-hover:brightness-105"
                 />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-500/14 via-blue-600/8 to-purple-600/10 mix-blend-screen" />
                 <div className="absolute right-2 top-2 rounded-full bg-black/60 p-2 opacity-0 transition group-hover:opacity-100">
                   <FiZoomIn className="text-pink-400" />
                 </div>
@@ -99,8 +102,11 @@ export default function Certifications() {
                     src={selected.image}
                     alt={selected.title}
                     fill
-                    className="object-contain p-4"
+                    quality={100}
+                    sizes="(max-width: 768px) 100vw, 900px"
+                    className="object-contain p-3 brightness-105 contrast-110 sm:p-5"
                   />
+                  <div className="pointer-events-none absolute inset-0 bg-blue-500/8 mix-blend-screen" />
                 </div>
 
                 <div className="border-t border-white/10 p-6">

@@ -49,13 +49,14 @@ export default function Education() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl shadow-[0_0_40px_rgba(168,85,247,0.12)]"
+      whileHover={{ y: -6, scale: 1.005 }}
+      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl shadow-[0_0_40px_rgba(168,85,247,0.12)] transition-all duration-300 hover:border-purple-500/30 hover:shadow-[0_0_44px_rgba(168,85,247,0.17)] sm:p-8"
     >
       <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-purple-500/10 blur-3xl" />
       <div className="absolute -left-20 -bottom-20 h-56 w-56 rounded-full bg-pink-500/10 blur-3xl" />
 
       <div className="relative flex flex-col gap-8 md:flex-row md:items-start">
-        <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600 to-pink-500 text-white shadow-lg">
+        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600 to-pink-500 text-white shadow-lg transition-transform duration-300 group-hover:scale-105 sm:h-20 sm:w-20">
           <GraduationCap size={36} />
         </div>
 

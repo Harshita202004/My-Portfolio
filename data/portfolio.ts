@@ -15,6 +15,7 @@ export const portfolioData = {
   ],
   shortBio:
     "Computer Science Engineering student passionate about Full Stack Development, AI applications, and Data Analytics. I enjoy building modern, responsive web applications and solving real-world problems through technology.",
+  heroSkills: ["React", "Next.js", "Full Stack", "AI"],
 
   email: "harshita082004@gmail.com",
   phone: "+91 9901289643",
@@ -33,9 +34,7 @@ export const portfolioData = {
   // ── About ──────────────────────────────────────────────────
  about: {
   bio: [
-    "I'm a Computer Science Engineering student with a strong interest in Full Stack Development, AI applications, and Data Analytics.",
-    "I enjoy building scalable web applications using React, Next.js, Flask, MongoDB, and modern technologies.",
-    "I continuously improve my skills through projects, coding practice, and certifications.",
+    "I'm a Computer Science Engineering student focused on building polished, responsive web applications and practical AI/data-driven solutions. I enjoy turning ideas into clean, scalable products using modern frontend workflows, backend fundamentals, and thoughtful user experience design while continuously sharpening my skills through projects, coding practice, and certifications.",
   ],
 
   education: [
