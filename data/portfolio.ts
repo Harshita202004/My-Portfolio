@@ -7,10 +7,9 @@ export const portfolioData = {
   name: "Harshita",
   title: "Computer Science Engineering Student",
   typingRoles: [
-    "Full Stack Developer",
-    "Python Developer",
-    "AI Enthusiast",
+    "Aspiring Full Stack Developer",
     "Data Analytics Enthusiast",
+    "AI Applications Learner",
     "Problem Solver",
   ],
   shortBio:

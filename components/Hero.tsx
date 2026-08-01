@@ -9,17 +9,42 @@ export default function Hero() {
   const [typedTitle, setTypedTitle] = useState("");
 
   useEffect(() => {
-    let index = 0;
-    const interval = window.setInterval(() => {
-      index += 1;
-      setTypedTitle(portfolioData.title.slice(0, index));
+    const roles = portfolioData.typingRoles;
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    let timeout: number;
 
-      if (index >= portfolioData.title.length) {
-        window.clearInterval(interval);
+    const type = () => {
+      const currentRole = roles[roleIndex];
+      setTypedTitle(currentRole.slice(0, charIndex));
+
+      if (!deleting && charIndex < currentRole.length) {
+        charIndex += 1;
+        timeout = window.setTimeout(type, 58);
+        return;
       }
-    }, 54);
 
-    return () => window.clearInterval(interval);
+      if (!deleting && charIndex === currentRole.length) {
+        deleting = true;
+        timeout = window.setTimeout(type, 1300);
+        return;
+      }
+
+      if (deleting && charIndex > 0) {
+        charIndex -= 1;
+        timeout = window.setTimeout(type, 34);
+        return;
+      }
+
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      timeout = window.setTimeout(type, 260);
+    };
+
+    type();
+
+    return () => window.clearTimeout(timeout);
   }, []);
 
   return (
@@ -38,8 +63,10 @@ export default function Hero() {
               {portfolioData.name}
             </span>
           </h1>
-          <h2 className="min-h-[72px] text-2xl md:text-3xl font-bold mb-6 text-white tracking-wide sm:min-h-0">
-            <span>{typedTitle}</span>
+          <h2 className="mb-6 min-h-[72px] text-2xl font-bold tracking-wide text-white md:min-h-[40px] md:text-3xl">
+            <span className="inline-block w-full max-w-full">
+              {typedTitle}
+            </span>
             <motion.span
               aria-hidden="true"
               animate={{ opacity: [0, 1, 1, 0] }}
@@ -84,20 +111,23 @@ export default function Hero() {
         
         <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }} className="relative order-1 flex justify-center lg:order-2 lg:justify-end">
           <motion.div
-               animate={{ y: [-10, 10, -10], rotate: [-0.8, 0.8, -0.8] }}
-               whileHover={{ scale: 1.035, rotateX: 4, rotateY: -6 }}
-               transition={{ y: { duration: 6, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" }, scale: { duration: 0.3 } }}
-               className="relative w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] md:w-[450px] md:h-[450px] rounded-full p-[3px] md:p-1 will-change-transform"
+               whileHover={{
+                 scale: 1.035,
+                 rotateX: 3,
+                 rotateY: -4,
+                 boxShadow:
+                   "0 0 76px rgba(168, 85, 247, 0.42), 0 0 130px rgba(236, 72, 153, 0.22), inset 0 0 24px rgba(168, 85, 247, 0.38)",
+               }}
+               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+               className="group relative h-[240px] w-[240px] rounded-full p-[3px] will-change-transform sm:h-[300px] sm:w-[300px] md:h-[450px] md:w-[450px] md:p-1"
                style={{
                  background: "conic-gradient(from 180deg, rgba(168,85,247,0.15), rgba(236,72,153,0.75), rgba(59,130,246,0.65), rgba(168,85,247,0.15))",
                  boxShadow: "0 0 70px rgba(168, 85, 247, 0.35), 0 0 120px rgba(236, 72, 153, 0.18), inset 0 0 22px rgba(168, 85, 247, 0.35)",
                }}
           >
-            <motion.div
+            <div
               aria-hidden="true"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-2 -z-10 rounded-full bg-[conic-gradient(from_90deg,rgba(236,72,153,.05),rgba(168,85,247,.45),rgba(59,130,246,.35),rgba(236,72,153,.05))] blur-sm"
+              className="absolute -inset-2 -z-10 rounded-full bg-[conic-gradient(from_90deg,rgba(236,72,153,.05),rgba(168,85,247,.42),rgba(59,130,246,.28),rgba(236,72,153,.05))] opacity-75 blur-sm transition-opacity duration-500 group-hover:opacity-100"
             />
             <div className="w-full h-full rounded-full overflow-hidden bg-[#0A0A0A] relative border-[4px] border-[#0A0A0A]">
               <Image

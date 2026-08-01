@@ -39,21 +39,31 @@ export default function Achievements() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -8, scale: 1.01 }}
-                className="group overflow-hidden rounded-3xl border border-white/10 bg-[#0B0B12]/80 p-5 backdrop-blur-xl shadow-[0_0_30px_rgba(168,85,247,0.12)] transition-all duration-300 hover:border-purple-500/35 hover:shadow-[0_0_36px_rgba(168,85,247,0.18)] sm:p-6 lg:p-8"
+                whileHover={{ y: -7, scale: 1.008 }}
+                className="group overflow-hidden rounded-3xl border border-white/10 bg-[#0B0B12]/80 p-5 backdrop-blur-xl shadow-[0_0_30px_rgba(168,85,247,0.12)] transition-all duration-300 hover:border-purple-500/35 hover:bg-[#10101A]/82 hover:shadow-[0_0_42px_rgba(168,85,247,0.2)] sm:p-6 lg:p-8"
               >
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] sm:w-40 sm:shrink-0">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:w-40 sm:shrink-0">
+                    <Image
+                      src={item.image}
+                      alt=""
+                      fill
+                      quality={75}
+                      sizes="(max-width: 640px) 100vw, 160px"
+                      className="scale-110 object-cover object-center opacity-50 blur-md"
+                      aria-hidden="true"
+                    />
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
                       quality={95}
                       sizes="(max-width: 640px) 100vw, 160px"
-                      className="object-cover object-center brightness-90 saturate-125 transition duration-700 group-hover:scale-105 group-hover:brightness-105"
+                      className="object-cover object-center brightness-90 saturate-125 blur-[1px] transition duration-700 group-hover:scale-105 group-hover:blur-0 group-hover:brightness-105"
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-500/16 via-purple-600/10 to-pink-500/10 mix-blend-screen" />
-                    <div className="absolute left-3 top-3 flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-black/45 text-lg text-white shadow-lg backdrop-blur-md">
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-500/18 via-purple-600/12 to-pink-500/12 mix-blend-screen" />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0B0B12]/85 to-transparent" />
+                    <div className="absolute left-3 top-3 flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-black/45 text-lg text-white shadow-lg shadow-purple-500/10 backdrop-blur-md transition duration-300 group-hover:border-purple-400/30 group-hover:bg-purple-500/20">
                       <Icon />
                     </div>
                   </div>
