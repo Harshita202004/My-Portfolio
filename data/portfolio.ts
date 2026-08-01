@@ -7,15 +7,14 @@ export const portfolioData = {
   name: "Harshita",
   title: "Computer Science Engineering Student",
   typingRoles: [
-    "Aspiring Full Stack Developer",
-    "Data Analytics Enthusiast",
-    "Power BI Developer",
-    "Tableau Developer",
-    "AI Applications Learner",
-  ],
+  "Aspiring Software Engineer",
+  "Aspiring Full Stack Developer",
+  "Data Analytics Enthusiast",
+  "AI Applications Learner",
+],
   shortBio:
     "Computer Science Engineering student passionate about Full Stack Development, AI applications, and Data Analytics. I enjoy building modern, responsive web applications and solving real-world problems through technology.",
-  heroSkills: ["Data Analytics", "Power BI", "Tableau", "AI Applications"],
+  heroSkills: [],
 
   email: "harshita082004@gmail.com",
   phone: "+91 9901289643",

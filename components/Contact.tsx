@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -13,8 +14,6 @@ import { FaLinkedinIn } from "react-icons/fa";
 
 import SectionWrapper from "./SectionWrapper";
 import SectionHeading from "./SectionHeading";
-
-const CONTACT_ENDPOINT = "/api/contact";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -41,16 +40,24 @@ export default function Contact() {
     setStatus("loading");
 
     try {
-      const res = await fetch(CONTACT_ENDPOINT, {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: "da0c2b61-cd9e-4e48-ae11-7d0ccd411546",
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
       });
 
-      if (!res.ok) throw new Error();
+      const result = await res.json();
+
+      if (!result.success) throw new Error();
 
       setStatus("success");
       setFormData({
@@ -106,12 +113,15 @@ export default function Contact() {
                 className="py-16 text-center"
               >
                 <FiCheckCircle className="mx-auto text-6xl text-green-400" />
+
                 <h3 className="mt-6 text-3xl font-bold text-white">
                   Message Sent Successfully!
                 </h3>
+
                 <p className="mt-3 text-gray-400">
-  Thank you for contacting me. I&apos;ll get back to you soon.
-</p>
+                  Thank you for contacting me. I&apos;ll get back to you soon.
+                </p>
+
                 <motion.button
                   whileHover={{ y: -2, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -132,7 +142,8 @@ export default function Contact() {
                 {status === "error" && (
                   <div className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-red-300">
                     <FiAlertCircle />
-                    Something went wrong. Or email me directly at{" "}
+                    Something went wrong. Please try again or email me directly
+                    at{" "}
                     <a
                       href="mailto:harshita082004@gmail.com"
                       className="underline"
@@ -144,7 +155,6 @@ export default function Contact() {
 
                 <div className="grid gap-6 md:grid-cols-2">
                   <input
-                    suppressHydrationWarning
                     className={input}
                     name="name"
                     placeholder="Your Name"
@@ -153,8 +163,8 @@ export default function Contact() {
                     required
                     disabled={isLoading}
                   />
+
                   <input
-                    suppressHydrationWarning
                     className={input}
                     name="email"
                     type="email"
@@ -167,7 +177,6 @@ export default function Contact() {
                 </div>
 
                 <input
-                  suppressHydrationWarning
                   className={input}
                   name="subject"
                   placeholder="Subject"
@@ -176,8 +185,8 @@ export default function Contact() {
                   required
                   disabled={isLoading}
                 />
+
                 <textarea
-                  suppressHydrationWarning
                   className={input + " resize-none"}
                   rows={6}
                   name="message"
@@ -189,9 +198,8 @@ export default function Contact() {
                 />
 
                 <motion.button
-                  suppressHydrationWarning
                   whileHover={{ scale: isLoading ? 1 : 1.02 }}
-                  whileTap={{ scale: isLoading ? 1 : .98 }}
+                  whileTap={{ scale: isLoading ? 1 : 0.98 }}
                   disabled={isLoading}
                   className="flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 py-4 font-semibold text-white shadow-[0_0_22px_rgba(168,85,247,0.18)] transition hover:shadow-[0_0_32px_rgba(236,72,153,0.32)] disabled:cursor-not-allowed disabled:opacity-75"
                 >
