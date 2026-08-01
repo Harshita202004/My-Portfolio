@@ -81,20 +81,17 @@ export default function Contact() {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           <ContactCard
             icon={<FiMail />}
-            title="Email"
-            value="harshita082004@gmail.com"
+            label="Email"
             href="mailto:harshita082004@gmail.com"
           />
           <ContactCard
             icon={<FaLinkedinIn />}
-            title="LinkedIn"
-            value="linkedin.com/in/harshita-477360315"
+            label="LinkedIn"
             href="https://www.linkedin.com/in/harshita-477360315"
           />
           <ContactCard
             icon={<FiGithub />}
-            title="GitHub"
-            value="github.com/Harshita202004"
+            label="GitHub"
             href="https://github.com/Harshita202004"
           />
         </div>
@@ -146,14 +143,53 @@ export default function Contact() {
                 )}
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <input className={input} name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required disabled={isLoading}/>
-                  <input className={input} name="email" type="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required disabled={isLoading}/>
+                  <input
+                    suppressHydrationWarning
+                    className={input}
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    disabled={isLoading}
+                  />
+                  <input
+                    suppressHydrationWarning
+                    className={input}
+                    name="email"
+                    type="email"
+                    placeholder="Your Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    disabled={isLoading}
+                  />
                 </div>
 
-                <input className={input} name="subject" placeholder="Subject" value={formData.subject} onChange={handleChange} required disabled={isLoading}/>
-                <textarea className={input+" resize-none"} rows={6} name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required disabled={isLoading}/>
+                <input
+                  suppressHydrationWarning
+                  className={input}
+                  name="subject"
+                  placeholder="Subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  disabled={isLoading}
+                />
+                <textarea
+                  suppressHydrationWarning
+                  className={input + " resize-none"}
+                  rows={6}
+                  name="message"
+                  placeholder="Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  disabled={isLoading}
+                />
 
                 <motion.button
+                  suppressHydrationWarning
                   whileHover={{ scale: isLoading ? 1 : 1.02 }}
                   whileTap={{ scale: isLoading ? 1 : .98 }}
                   disabled={isLoading}
@@ -182,13 +218,11 @@ export default function Contact() {
 
 function ContactCard({
   icon,
-  title,
-  value,
+  label,
   href,
 }: {
   icon: React.ReactNode;
-  title: string;
-  value: string;
+  label: string;
   href: string;
 }) {
   return (
@@ -198,13 +232,13 @@ function ContactCard({
       href={href}
       target={href.startsWith("http") ? "_blank" : undefined}
       rel="noopener noreferrer"
-      className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center transition hover:border-purple-500/40 hover:bg-purple-500/[0.04] hover:shadow-[0_0_30px_rgba(168,85,247,0.14)]"
+      aria-label={label}
+      title={label}
+      className="group flex min-h-28 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center transition hover:border-purple-500/40 hover:bg-purple-500/[0.04] hover:shadow-[0_0_30px_rgba(168,85,247,0.14)]"
     >
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-2xl text-white transition-transform duration-300 group-hover:scale-110">
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 text-3xl text-white shadow-[0_0_22px_rgba(168,85,247,0.2)] transition-transform duration-300 group-hover:scale-110">
         {icon}
       </div>
-      <h3 className="mt-4 text-lg font-semibold text-white">{title}</h3>
-      <p className="mt-2 break-all text-sm text-gray-400">{value}</p>
     </motion.a>
   );
 }

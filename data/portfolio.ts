@@ -9,12 +9,13 @@ export const portfolioData = {
   typingRoles: [
     "Aspiring Full Stack Developer",
     "Data Analytics Enthusiast",
+    "Power BI Developer",
+    "Tableau Developer",
     "AI Applications Learner",
-    "Problem Solver",
   ],
   shortBio:
     "Computer Science Engineering student passionate about Full Stack Development, AI applications, and Data Analytics. I enjoy building modern, responsive web applications and solving real-world problems through technology.",
-  heroSkills: ["React", "Next.js", "Full Stack", "AI"],
+  heroSkills: ["Data Analytics", "Power BI", "Tableau", "AI Applications"],
 
   email: "harshita082004@gmail.com",
   phone: "+91 9901289643",

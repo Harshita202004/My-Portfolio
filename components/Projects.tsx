@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { FiGithub, FiExternalLink, FiX, FiZoomIn } from "react-icons/fi";
+import SectionHeading from "./SectionHeading";
 
 type Project = typeof portfolioData.projects[0];
 
@@ -13,11 +14,13 @@ export default function Projects() {
 
   return (
     <SectionWrapper id="projects">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
-          Featured Projects
-        </h2>
-      </div>
+      <SectionHeading
+        eyebrow="PORTFOLIO"
+        title="Featured"
+        highlight="Projects"
+        center
+        subtitle="Selected projects that combine clean interfaces, practical engineering, and data-driven problem solving."
+      />
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {portfolioData.projects.filter(p => p.featured).map((project, i) => (
@@ -28,7 +31,7 @@ export default function Projects() {
             viewport={{ once: true }}
             transition={{ delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -8 }}
-            className="group bg-[#0B0C10] border border-white/10 hover:border-pink-500/50 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_34px_rgba(236,72,153,0.24)] overflow-hidden rounded-2xl flex flex-col transition-all duration-300"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0B0C10]/92 shadow-[0_0_15px_rgba(0,0,0,0.5)] backdrop-blur-xl transition-all duration-300 hover:border-pink-500/45 hover:shadow-[0_0_36px_rgba(236,72,153,0.22)]"
           >
             {/* Browser Frame Mockup */}
             <div
@@ -53,16 +56,16 @@ export default function Projects() {
                     fill
                     quality={95}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover object-top brightness-90 saturate-125 transition-all duration-700 group-hover:scale-105 group-hover:brightness-105"
+                    className="object-cover object-top brightness-[0.82] contrast-105 saturate-115 transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045] group-hover:brightness-95 group-hover:saturate-125"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-pink-500/20 font-bold text-4xl">NO IMG</div>
                 )}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-500/18 via-blue-600/10 to-purple-600/12 mix-blend-screen transition-opacity duration-500 group-hover:opacity-70" />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0B0C10]/80 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/16 via-purple-600/10 to-pink-500/12 transition-opacity duration-500 group-hover:opacity-65" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0B0C10]/88 to-transparent" />
                 {/* Zoom overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-all duration-300">
-                  <FiZoomIn size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/16">
+                  <FiZoomIn size={28} className="text-white opacity-0 drop-shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:opacity-100" />
                 </div>
               </div>
             </div>

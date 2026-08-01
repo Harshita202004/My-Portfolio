@@ -21,25 +21,25 @@ export default function Hero() {
 
       if (!deleting && charIndex < currentRole.length) {
         charIndex += 1;
-        timeout = window.setTimeout(type, 58);
+        timeout = window.setTimeout(type, 46 + Math.random() * 38);
         return;
       }
 
       if (!deleting && charIndex === currentRole.length) {
         deleting = true;
-        timeout = window.setTimeout(type, 1300);
+        timeout = window.setTimeout(type, 1450);
         return;
       }
 
       if (deleting && charIndex > 0) {
         charIndex -= 1;
-        timeout = window.setTimeout(type, 34);
+        timeout = window.setTimeout(type, 24 + Math.random() * 18);
         return;
       }
 
       deleting = false;
       roleIndex = (roleIndex + 1) % roles.length;
-      timeout = window.setTimeout(type, 260);
+      timeout = window.setTimeout(type, 360);
     };
 
     type();
@@ -63,8 +63,8 @@ export default function Hero() {
               {portfolioData.name}
             </span>
           </h1>
-          <h2 className="mb-6 min-h-[72px] text-2xl font-bold tracking-wide text-white md:min-h-[40px] md:text-3xl">
-            <span className="inline-block w-full max-w-full">
+          <h2 className="mb-6 flex min-h-[76px] w-full max-w-full items-center justify-center text-2xl font-bold tracking-wide text-white sm:min-h-[44px] md:text-3xl lg:justify-start">
+            <span className="inline-block min-w-0 whitespace-normal break-words sm:min-w-[430px]">
               {typedTitle}
             </span>
             <motion.span
@@ -119,7 +119,7 @@ export default function Hero() {
                    "0 0 76px rgba(168, 85, 247, 0.42), 0 0 130px rgba(236, 72, 153, 0.22), inset 0 0 24px rgba(168, 85, 247, 0.38)",
                }}
                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-               className="group relative h-[240px] w-[240px] rounded-full p-[3px] will-change-transform sm:h-[300px] sm:w-[300px] md:h-[450px] md:w-[450px] md:p-1"
+               className="group relative h-[240px] w-[240px] rounded-full p-[3px] will-change-transform [transform-style:preserve-3d] sm:h-[300px] sm:w-[300px] md:h-[450px] md:w-[450px] md:p-1"
                style={{
                  background: "conic-gradient(from 180deg, rgba(168,85,247,0.15), rgba(236,72,153,0.75), rgba(59,130,246,0.65), rgba(168,85,247,0.15))",
                  boxShadow: "0 0 70px rgba(168, 85, 247, 0.35), 0 0 120px rgba(236, 72, 153, 0.18), inset 0 0 22px rgba(168, 85, 247, 0.35)",
@@ -129,29 +129,15 @@ export default function Hero() {
               aria-hidden="true"
               className="absolute -inset-2 -z-10 rounded-full bg-[conic-gradient(from_90deg,rgba(236,72,153,.05),rgba(168,85,247,.42),rgba(59,130,246,.28),rgba(236,72,153,.05))] opacity-75 blur-sm transition-opacity duration-500 group-hover:opacity-100"
             />
-            <div className="w-full h-full rounded-full overflow-hidden bg-[#0A0A0A] relative border-[4px] border-[#0A0A0A]">
+            <div className="relative h-full w-full overflow-hidden rounded-full border-[4px] border-[#0A0A0A] bg-[#0A0A0A] transition-colors duration-700 group-hover:border-purple-300/35">
               <Image
-  src={portfolioData.avatarUrl}
-  alt={portfolioData.name}
-  fill
-  priority
-  sizes="(max-width: 768px) 300px, 450px"
-  className="
-    object-cover
-    object-top
-    scale-105
-    brightness-105
-    contrast-110
-    saturate-110
-    transition-all
-    duration-700
-    ease-out
-    hover:scale-110
-    hover:brightness-110
-    hover:saturate-125
-    cursor-pointer
-  "
-/>
+                src={portfolioData.avatarUrl}
+                alt={portfolioData.name}
+                fill
+                priority
+                sizes="(max-width: 768px) 300px, 450px"
+                className="cursor-pointer object-cover object-top scale-105 brightness-105 contrast-110 saturate-110 transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:brightness-110 group-hover:saturate-125"
+              />
             </div>
           </motion.div>
         </motion.div>

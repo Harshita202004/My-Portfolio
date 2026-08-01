@@ -1,10 +1,12 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { FiGithub, FiMail } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
-import { Heart } from "lucide-react";
 
 import { portfolioData } from "@/data/portfolio";
+
+const COPYRIGHT_YEAR = 2026;
 
 export default function Footer() {
   return (
@@ -76,19 +78,10 @@ export default function Footer() {
       <div className="relative border-t border-white/10 px-6 py-5">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-sm text-gray-500 md:flex-row">
           <p>
-            © {new Date().getFullYear()} {portfolioData.name}. All rights
-            reserved.
+            &copy; {COPYRIGHT_YEAR} {portfolioData.name}. All rights reserved.
           </p>
 
-          <p className="flex items-center gap-2">
-            Built with
-            <Heart
-              size={15}
-              className="fill-pink-500 text-pink-500"
-              aria-hidden="true"
-            />
-            <span>Next.js, Tailwind CSS &amp; Framer Motion</span>
-          </p>
+          <p>Crafted with care and clean, responsive design.</p>
         </div>
       </div>
     </footer>
