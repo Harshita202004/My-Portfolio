@@ -75,7 +75,7 @@ export default function Hero() {
             />
           </h2>
           <p className="text-sm md:text-base text-gray-300 font-light mb-8 max-w-lg leading-relaxed">
-            {portfolioData.shortBio} I build stunning websites that rank higher and perform better. Let&apos;s create something amazing together!
+            {portfolioData.shortBio} I enjoy building modern, responsive web applications and creating user-friendly digital experiences that solve real-world problems.
           </p>
           
           <div className="flex flex-wrap justify-center gap-3 mb-8 lg:justify-start">

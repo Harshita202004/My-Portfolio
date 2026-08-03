@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Calendar, Award } from "lucide-react";
+import { Calendar, Award } from "lucide-react";
 import { FaUniversity, FaSchool } from "react-icons/fa";
-import { MdOutlineScience } from "react-icons/md";
+import { FaBookOpen } from "react-icons/fa6";
 import SectionWrapper from "./SectionWrapper";
 import SectionHeading from "./SectionHeading";
 
@@ -34,7 +34,7 @@ export default function Education() {
   degree: "Pre-University Course (PUC)",
   duration: "2022",
   score: "95%",
-  icon: MdOutlineScience,
+  icon: FaBookOpen,
   description:
     "Completed PCMB with a strong foundation in science, mathematics, and analytical problem-solving.",
 },
@@ -62,8 +62,8 @@ export default function Education() {
 
       <div className="relative flex flex-col gap-8 md:flex-row md:items-start">
         <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600 to-pink-500 text-white shadow-lg transition-transform duration-300 group-hover:scale-105 sm:h-20 sm:w-20">
-          <GraduationCap size={36} />
-        </div>
+  <edu.icon className="h-9 w-9 sm:h-10 sm:w-10" />
+</div>
 
         <div className="flex-1">
           <h3 className="text-2xl font-bold text-white">
