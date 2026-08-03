@@ -13,7 +13,7 @@ export const portfolioData = {
   "AI Applications Learner",
 ],
   shortBio:
-    "Computer Science Engineering student passionate about Full Stack Development, AI applications, and Data Analytics. I enjoy building modern, responsive web applications and solving real-world problems through technology.",
+    "Computer Science Engineering student passionate about Full Stack Development, AI, and Data Analytics.",
   heroSkills: [],
 
   email: "harshita082004@gmail.com",
@@ -54,7 +54,6 @@ export const portfolioData = {
     { name: "Python", icon: "SiPython", color: "#3776AB" },
     { name: "Java", icon: "SiJava", color: "#007396" },
     { name: "C", icon: "SiC", color: "#A8B9CC" },
-    { name: "SQL", icon: "SiMysql", color: "#4479A1" },
     { name: "HTML", icon: "SiHtml5", color: "#E34F26" },
     { name: "CSS", icon: "SiCss3", color: "#1572B6" },
     { name: "JavaScript", icon: "SiJavascript", color: "#F7DF1E" },
@@ -70,16 +69,6 @@ export const portfolioData = {
   // ── Projects ───────────────────────────────────────────────
   projects: [
     {
-      title: "AI Finance Advisor",
-      description:
-        "AI-powered finance management platform with dashboards and machine learning predictions.",
-      image: "/images/finance-advisor.png",
-      tech: ["Python", "Flask", "MongoDB", "Machine Learning"],
-        github: "https://github.com/Harshita202004/AI-Finance-Advisor",
-    live: "https://ai-finance-advisor-qzmq.onrender.com",
-      featured: true,
-    },
-    {
       title: "TaskFlow",
       description:
         "Smart daily task and productivity tracker with authentication and analytics.",
@@ -87,6 +76,16 @@ export const portfolioData = {
       tech: ["React", "Express", "MongoDB"],
         github: "https://github.com/Harshita202004/TaskFlow",
     live: "https://taskflow-twlk.onrender.com/",
+      featured: true,
+    },
+    {
+      title: "AI Finance Advisor",
+      description:
+        "AI-powered finance management platform with dashboards and machine learning predictions.",
+      image: "/images/finance-advisor.png",
+      tech: ["Python", "Flask", "MongoDB", "Machine Learning"],
+        github: "https://github.com/Harshita202004/AI-Finance-Advisor",
+    live: "https://ai-finance-advisor-qzmq.onrender.com",
       featured: true,
     },
 

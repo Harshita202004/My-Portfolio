@@ -20,7 +20,7 @@ export default function About() {
 
         <div className="rounded-[32px] border border-white/10 bg-[#0B0B12]/80 p-6 shadow-[0_0_50px_rgba(168,85,247,.15)] backdrop-blur-xl transition-colors duration-300 hover:border-purple-500/25 sm:p-8 md:p-14">
           <SectionHeading
-            eyebrow="ABOUT ME"
+            eyebrow="Overview"
             title="About"
             highlight="Me"
             center

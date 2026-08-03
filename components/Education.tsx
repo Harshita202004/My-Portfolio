@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { GraduationCap, Calendar, Award } from "lucide-react";
+import { FaUniversity, FaSchool } from "react-icons/fa";
+import { MdOutlineScience } from "react-icons/md";
 import SectionWrapper from "./SectionWrapper";
 import SectionHeading from "./SectionHeading";
 
@@ -19,29 +21,32 @@ export default function Education() {
       <div className="mx-auto max-w-5xl space-y-8">
   {[
     {
-      institution: "MVJ College of Engineering",
-      degree: "Bachelor of Engineering in Computer Science Engineering",
-      duration: "2023 – 2027",
-      score: "CGPA: 9.04",
-      description:
-        "Pursuing a strong foundation in software engineering, full stack development, artificial intelligence, cloud computing, and data analytics while building practical, real-world projects and continuously improving problem-solving skills.",
-    },
-    {
-      institution: "PECT College, Raichur",
-      degree: "Pre-University Course (PUC)",
-      duration: "2022",
-      score: "95%",
-      description:
-    "Completed the Pre-University Course (PCMB), strengthening my foundation in Physics, Chemistry, Mathematics, and Biology while enhancing analytical thinking, scientific reasoning, and problem-solving abilities.",
-    },
-    {
-      institution: "Hamdard School, Raichur",
-      degree: "Secondary School Leaving Certificate (SSLC)",
-      duration: "2022",
-      score: "88%",
-      description:
-        "Completed secondary education with a strong academic performance while actively participating in curricular and co-curricular activities.",
-    },
+  institution: "MVJ College of Engineering",
+  degree: "Bachelor of Engineering in Computer Science Engineering",
+  duration: "2023 – 2027",
+  score: "CGPA: 9.04",
+  icon: FaUniversity,
+  description:
+    "Building a strong foundation in software engineering, full stack development, AI, cloud computing, and data analytics.",
+},
+{
+  institution: "PECT College, Raichur",
+  degree: "Pre-University Course (PUC)",
+  duration: "2022",
+  score: "95%",
+  icon: MdOutlineScience,
+  description:
+    "Completed PCMB with a strong foundation in science, mathematics, and analytical problem-solving.",
+},
+{
+  institution: "Hamdard School, Raichur",
+  degree: "Secondary School Leaving Certificate (SSLC)",
+  duration: "2020",
+  score: "88%",
+  icon: FaSchool,
+  description:
+    "Completed secondary education with strong academic performance and active participation in extracurricular activities.",
+},
   ].map((edu, index) => (
     <motion.div
       key={edu.institution}
